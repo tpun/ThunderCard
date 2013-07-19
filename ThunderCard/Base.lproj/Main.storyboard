@@ -52,6 +52,10 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="QuL-nL-XIz"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="1yV-VC-TA8"/>
+                                </connections>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nv9-PB-eYo">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
