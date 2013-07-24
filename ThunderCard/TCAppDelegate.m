@@ -17,17 +17,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSManagedObjectContext *context = [self managedObjectContext];
-    Card *card = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
-    card.text = @"testing 1 2 3";
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    Card *card = [NSEntityDescription insertNewObjectForEntityForName:@"Card"
+                                               inManagedObjectContext:managedObjectContext];
+    card.text = @"內容";
 
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Card"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"text contains %@", @"testing"];
-    request.predicate = predicate;
+    Card *card2 = [NSEntityDescription insertNewObjectForEntityForName:@"Card"
+                                                inManagedObjectContext:managedObjectContext];
+    card2.text = @"中文";
 
-    NSError *error;
-    NSArray *cards = [context executeFetchRequest:request error:&error];
-    NSLog(@"%@", cards);
+//    Card *card3 = [NSEntityDescription insertNewObjectForEntityForName:@"Card"
+//                                                inManagedObjectContext:managedObjectContext];
+//    card3.text = @"testing";
+
+    [managedObjectContext save:NULL];
+
+//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Card"];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"text contains %@", @"testing"];
+//    request.predicate = predicate;
+//
+//    NSError *error;
+//    NSArray *cards = [managedObjectContext executeFetchRequest:request error:&error];
+//    NSLog(@"%@", cards);
 
     // Override point for customization after application launch.
     return YES;
