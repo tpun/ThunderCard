@@ -9,7 +9,7 @@
         <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="recording" inverseEntity="Card" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Recording" positionX="189" positionY="45" width="128" height="58"/>
+        <element name="Recording" positionX="189" positionY="45" width="128" height="73"/>
         <element name="Card" positionX="9" positionY="-81" width="128" height="73"/>
     </elements>
 </model>

@@ -27,6 +27,8 @@
 		24F29FA017994EA200BDA4AC /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29F9E17994EA200BDA4AC /* Recording.m */; };
 		24F29FA317994EA200BDA4AC /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29FA217994EA200BDA4AC /* Card.m */; };
 		24F29FA417994EA200BDA4AC /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29FA217994EA200BDA4AC /* Card.m */; };
+		24F2A0291799892900BDA4AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F2A0281799892900BDA4AC /* CoreData.framework */; };
+		24F2A02A1799892900BDA4AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F2A0281799892900BDA4AC /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,7 @@
 		24F29F9E17994EA200BDA4AC /* Recording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recording.m; path = Models/Recording.m; sourceTree = "<group>"; };
 		24F29FA117994EA200BDA4AC /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Models/Card.h; sourceTree = "<group>"; };
 		24F29FA217994EA200BDA4AC /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Models/Card.m; sourceTree = "<group>"; };
+		24F2A0281799892900BDA4AC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24F29F671798DDC100BDA4AC /* CoreGraphics.framework in Frameworks */,
+				24F2A0291799892900BDA4AC /* CoreData.framework in Frameworks */,
 				24F29F691798DDC100BDA4AC /* UIKit.framework in Frameworks */,
 				24F29F651798DDC100BDA4AC /* Foundation.framework in Frameworks */,
 			);
@@ -82,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24F29F841798DDC100BDA4AC /* XCTest.framework in Frameworks */,
+				24F2A02A1799892900BDA4AC /* CoreData.framework in Frameworks */,
 				24F29F861798DDC100BDA4AC /* UIKit.framework in Frameworks */,
 				24F29F851798DDC100BDA4AC /* Foundation.framework in Frameworks */,
 			);
@@ -112,6 +117,7 @@
 		24F29F631798DDC100BDA4AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24F2A0281799892900BDA4AC /* CoreData.framework */,
 				24F29F641798DDC100BDA4AC /* Foundation.framework */,
 				24F29F661798DDC100BDA4AC /* CoreGraphics.framework */,
 				24F29F681798DDC100BDA4AC /* UIKit.framework */,
@@ -124,9 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				24F29F9917994C8200BDA4AC /* ThunderCard.xcdatamodeld */,
+				24F29F761798DDC100BDA4AC /* Main.storyboard */,
 				24F29F731798DDC100BDA4AC /* TCAppDelegate.h */,
 				24F29F741798DDC100BDA4AC /* TCAppDelegate.m */,
-				24F29F761798DDC100BDA4AC /* Main.storyboard */,
 				24F29F791798DDC100BDA4AC /* TCViewController.h */,
 				24F29F7A1798DDC100BDA4AC /* TCViewController.m */,
 				24F29FA517994EAD00BDA4AC /* Models */,
