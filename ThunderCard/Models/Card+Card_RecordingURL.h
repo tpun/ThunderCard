@@ -9,8 +9,7 @@
 #import "Card.h"
 
 @interface Card (Card_RecordingURL)
-
 // Temporary file location for storing the recording
-- (NSURL *)recordingURL;
-
+@property (readonly, nonatomic) NSURL *recordingURL;
+- (void)saveRecording:(NSURL *)fromURL;
 @end

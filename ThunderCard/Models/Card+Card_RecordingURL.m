@@ -14,7 +14,11 @@
 {
     NSString *tmpDirectory = NSTemporaryDirectory();
     NSString *tmpFile = [tmpDirectory stringByAppendingPathComponent:[self recordingFilename]];
-    return [NSURL URLWithString:tmpFile];
+    return [NSURL fileURLWithPath:tmpFile];
+}
+
+- (void)saveRecording:(NSURL *)fromURL
+{
 }
 
 - (NSString *)recordingFilename
