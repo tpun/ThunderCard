@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2464152917A019A300B4B0B7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2464152817A019A300B4B0B7 /* AVFoundation.framework */; };
+		2464152A17A019A300B4B0B7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2464152817A019A300B4B0B7 /* AVFoundation.framework */; };
+		2464153117A01E0400B4B0B7 /* Card+Card_RecordingURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2464153017A01E0400B4B0B7 /* Card+Card_RecordingURL.m */; };
+		2464153217A01E0400B4B0B7 /* Card+Card_RecordingURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2464153017A01E0400B4B0B7 /* Card+Card_RecordingURL.m */; };
 		24F29F651798DDC100BDA4AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F29F641798DDC100BDA4AC /* Foundation.framework */; };
 		24F29F671798DDC100BDA4AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F29F661798DDC100BDA4AC /* CoreGraphics.framework */; };
 		24F29F691798DDC100BDA4AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F29F681798DDC100BDA4AC /* UIKit.framework */; };
@@ -42,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2464152817A019A300B4B0B7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2464152F17A01E0400B4B0B7 /* Card+Card_RecordingURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Card+Card_RecordingURL.h"; path = "Models/Card+Card_RecordingURL.h"; sourceTree = "<group>"; };
+		2464153017A01E0400B4B0B7 /* Card+Card_RecordingURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Card+Card_RecordingURL.m"; path = "Models/Card+Card_RecordingURL.m"; sourceTree = "<group>"; };
 		24F29F611798DDC100BDA4AC /* ThunderCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThunderCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F29F641798DDC100BDA4AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		24F29F661798DDC100BDA4AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -76,6 +83,7 @@
 			files = (
 				24F29F671798DDC100BDA4AC /* CoreGraphics.framework in Frameworks */,
 				24F2A0291799892900BDA4AC /* CoreData.framework in Frameworks */,
+				2464152917A019A300B4B0B7 /* AVFoundation.framework in Frameworks */,
 				24F29F691798DDC100BDA4AC /* UIKit.framework in Frameworks */,
 				24F29F651798DDC100BDA4AC /* Foundation.framework in Frameworks */,
 			);
@@ -87,6 +95,7 @@
 			files = (
 				24F29F841798DDC100BDA4AC /* XCTest.framework in Frameworks */,
 				24F2A02A1799892900BDA4AC /* CoreData.framework in Frameworks */,
+				2464152A17A019A300B4B0B7 /* AVFoundation.framework in Frameworks */,
 				24F29F861798DDC100BDA4AC /* UIKit.framework in Frameworks */,
 				24F29F851798DDC100BDA4AC /* Foundation.framework in Frameworks */,
 			);
@@ -117,6 +126,7 @@
 		24F29F631798DDC100BDA4AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2464152817A019A300B4B0B7 /* AVFoundation.framework */,
 				24F2A0281799892900BDA4AC /* CoreData.framework */,
 				24F29F641798DDC100BDA4AC /* Foundation.framework */,
 				24F29F661798DDC100BDA4AC /* CoreGraphics.framework */,
@@ -178,6 +188,8 @@
 				24F29FA217994EA200BDA4AC /* Card.m */,
 				24F29F9D17994EA200BDA4AC /* Recording.h */,
 				24F29F9E17994EA200BDA4AC /* Recording.m */,
+				2464152F17A01E0400B4B0B7 /* Card+Card_RecordingURL.h */,
+				2464153017A01E0400B4B0B7 /* Card+Card_RecordingURL.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -280,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2464153117A01E0400B4B0B7 /* Card+Card_RecordingURL.m in Sources */,
 				24F29F9F17994EA200BDA4AC /* Recording.m in Sources */,
 				24F29F9B17994C8200BDA4AC /* ThunderCard.xcdatamodeld in Sources */,
 				24F29F7B1798DDC100BDA4AC /* TCViewController.m in Sources */,
@@ -294,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24F29F9C17994C8200BDA4AC /* ThunderCard.xcdatamodeld in Sources */,
+				2464153217A01E0400B4B0B7 /* Card+Card_RecordingURL.m in Sources */,
 				24F29F901798DDC100BDA4AC /* ThunderCardTests.m in Sources */,
 				24F29FA017994EA200BDA4AC /* Recording.m in Sources */,
 				24F29FA417994EA200BDA4AC /* Card.m in Sources */,
@@ -491,6 +505,7 @@
 				24F29F951798DDC100BDA4AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24F29F961798DDC100BDA4AC /* Build configuration list for PBXNativeTarget "ThunderCardTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +514,7 @@
 				24F29F981798DDC100BDA4AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
