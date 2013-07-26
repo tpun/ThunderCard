@@ -1,5 +1,5 @@
 //
-//  Card+Card_RecordingURL.h
+//  Card+RecordingHelpers.h
 //  ThunderCard
 //
 //  Created by Thomas Pun on 7/24/13.
@@ -8,7 +8,7 @@
 
 #import "Card.h"
 
-@interface Card (Card_RecordingURL)
+@interface Card (RecordingHelpers)
 // Temporary file location for storing the recording
 @property (readonly, nonatomic) NSURL *recordingURL;
 - (void)saveRecording:(NSURL *)fromURL;

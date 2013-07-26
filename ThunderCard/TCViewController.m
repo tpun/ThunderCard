@@ -10,7 +10,7 @@
 #import "TCAppDelegate.h"
 
 #import "Card.h"
-#import "Card+Card_RecordingURL.h"
+#import "Card+RecordingHelpers.h"
 #import "Recording.h"
 
 #import <AVFoundation/AVAudioRecorder.h>

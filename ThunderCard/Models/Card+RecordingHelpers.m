@@ -1,14 +1,14 @@
 //
-//  Card+Card_RecordingURL.m
+//  Card+RecordingHelpers.m
 //  ThunderCard
 //
 //  Created by Thomas Pun on 7/24/13.
 //  Copyright (c) 2013 Thomas Pun. All rights reserved.
 //
 
-#import "Card+Card_RecordingURL.h"
+#import "Card+RecordingHelpers.h"
 
-@implementation Card (Card_RecordingURL)
+@implementation Card (RecordingHelpers)
 
 - (NSURL *)recordingURL
 {
