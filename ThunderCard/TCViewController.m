@@ -20,10 +20,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (weak, nonatomic) IBOutlet UILabel *recordingStatusLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *recordingActivityIndicator;
-@property (weak, nonatomic) IBOutlet UIButton *recordButton;
 
 @property (strong, nonatomic) Card *card;
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
+@property (strong, nonatomic) NSTimer *timer;
 @end
 
 @implementation TCViewController
@@ -55,10 +56,11 @@
         NSError *error = nil;
         NSURL *url = self.card.recordingURL;
         NSDictionary *settings = @{AVEncoderAudioQualityKey: [NSNumber numberWithInt:AVAudioQualityHigh]};
+
         _audioRecorder = [[AVAudioRecorder alloc] initWithURL:url
                                                      settings:settings
                                                         error:&error];
-
+        _audioRecorder.meteringEnabled = YES;
         if (!_audioRecorder) {
             NSLog(@"Error: %@", error);
         }
@@ -68,14 +70,31 @@
 
 #pragma mark - Audio
 
-- (IBAction)startRecording:(UIButton *)sender {
+- (IBAction)startOrStopRecording:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        [self startRecording];
+    } else if (sender.state == UIGestureRecognizerStateEnded) {
+        [self stopAndSaveRecording];
+    } else if (sender.state != UIGestureRecognizerStateChanged) {
+        [self stopRecording];
+    }
+}
+
+- (void)startRecording
+{
     [self statusStartRecording];
     [self.audioRecorder record];
 }
 
-- (IBAction)stopRecording:(UIButton *)sender {
-    [self.audioRecorder stop];
+- (void)stopAndSaveRecording
+{
+    [self stopRecording];
     [self.card saveRecording:self.audioRecorder.url];
+}
+
+- (void)stopRecording
+{
+    [self.audioRecorder stop];
     [self statusStopRecording];
 }
 
@@ -84,9 +103,10 @@
     NSData *data = recording.data;
     if (data.length > 0) {
         NSError *error = nil;
-        AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithData:data
-                                                              error:&error];
-        [player play];
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithData:data
+                                                         error:&error];
+        [self.audioPlayer play];
+        NSLog(@"Playing recording");
     }
 }
 
@@ -95,11 +115,24 @@
 - (void)statusStartRecording {
     self.recordingStatusLabel.hidden = NO;
     [self.recordingActivityIndicator startAnimating];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.3
+                                                  target:self
+                                                selector:@selector(updateVolumeFeedback)
+                                                userInfo:nil
+                                                 repeats:YES];
 }
 
 - (void)statusStopRecording {
     self.recordingStatusLabel.hidden = YES;
     [self.recordingActivityIndicator stopAnimating];
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+- (void)updateVolumeFeedback {
+    [self.audioRecorder updateMeters];
+    float level = [self.audioRecorder averagePowerForChannel:0];
+    NSLog(@"Audio level: %f", level);
 }
 
 #pragma mark - Testing

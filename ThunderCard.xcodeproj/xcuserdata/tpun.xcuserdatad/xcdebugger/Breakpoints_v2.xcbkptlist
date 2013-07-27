@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThunderCard/TCViewController.m"
-            timestampString = "396538292.680788"
+            timestampString = "396590572.960158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "-playRecording:"
             landmarkType = "5">
          </BreakpointContent>
