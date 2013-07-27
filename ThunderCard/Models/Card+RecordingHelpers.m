@@ -7,6 +7,7 @@
 //
 
 #import "Card+RecordingHelpers.h"
+#import "Recording.h"
 
 @implementation Card (RecordingHelpers)
 
@@ -19,11 +20,18 @@
 
 - (void)saveRecording:(NSURL *)fromURL
 {
+    if (!self.recording) {
+        Recording *recording = [NSEntityDescription insertNewObjectForEntityForName:@"Recording"
+                                                             inManagedObjectContext:self.managedObjectContext];
+        self.recording = recording;
+    }
+
+    self.recording.data = [NSData dataWithContentsOfURL:fromURL];
 }
 
 - (NSString *)recordingFilename
 {
-    return @"xxx_recording"; // xxx should be based on unique ID of current Card object.
+    return @"xxx_recording.caf"; // xxx should be based on unique ID of current Card object.
 }
 
 @end
