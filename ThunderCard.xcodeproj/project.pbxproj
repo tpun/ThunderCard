@@ -33,6 +33,10 @@
 		24F29FA417994EA200BDA4AC /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29FA217994EA200BDA4AC /* Card.m */; };
 		24F2A0291799892900BDA4AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F2A0281799892900BDA4AC /* CoreData.framework */; };
 		24F2A02A1799892900BDA4AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F2A0281799892900BDA4AC /* CoreData.framework */; };
+		24F398AB17A3A92C0057DB03 /* TCCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F398AA17A3A92C0057DB03 /* TCCardViewCell.m */; };
+		24F398AC17A3A92C0057DB03 /* TCCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F398AA17A3A92C0057DB03 /* TCCardViewCell.m */; };
+		24F398AF17A3AF010057DB03 /* TCCardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F398AE17A3AF010057DB03 /* TCCardCollectionViewController.m */; };
+		24F398B017A3AF010057DB03 /* TCCardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F398AE17A3AF010057DB03 /* TCCardCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,10 @@
 		24F29FA117994EA200BDA4AC /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Models/Card.h; sourceTree = "<group>"; };
 		24F29FA217994EA200BDA4AC /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Models/Card.m; sourceTree = "<group>"; };
 		24F2A0281799892900BDA4AC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		24F398A917A3A92C0057DB03 /* TCCardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCardViewCell.h; sourceTree = "<group>"; };
+		24F398AA17A3A92C0057DB03 /* TCCardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCardViewCell.m; sourceTree = "<group>"; };
+		24F398AD17A3AF010057DB03 /* TCCardCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCardCollectionViewController.h; sourceTree = "<group>"; };
+		24F398AE17A3AF010057DB03 /* TCCardCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCardCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +153,10 @@
 				24F29F741798DDC100BDA4AC /* TCAppDelegate.m */,
 				24F29F791798DDC100BDA4AC /* TCViewController.h */,
 				24F29F7A1798DDC100BDA4AC /* TCViewController.m */,
+				24F398A917A3A92C0057DB03 /* TCCardViewCell.h */,
+				24F398AA17A3A92C0057DB03 /* TCCardViewCell.m */,
+				24F398AD17A3AF010057DB03 /* TCCardCollectionViewController.h */,
+				24F398AE17A3AF010057DB03 /* TCCardCollectionViewController.m */,
 				24F29FA517994EAD00BDA4AC /* Models */,
 				24F29F6B1798DDC100BDA4AC /* Supporting Files */,
 				24F29F7C1798DDC100BDA4AC /* Images.xcassets */,
@@ -296,9 +308,11 @@
 				24F29F9B17994C8200BDA4AC /* ThunderCard.xcdatamodeld in Sources */,
 				24F29F7B1798DDC100BDA4AC /* TCViewController.m in Sources */,
 				24F29F711798DDC100BDA4AC /* main.m in Sources */,
+				24F398AF17A3AF010057DB03 /* TCCardCollectionViewController.m in Sources */,
 				24F29F751798DDC100BDA4AC /* TCAppDelegate.m in Sources */,
 				24F29FA317994EA200BDA4AC /* Card.m in Sources */,
 				2410C63517A2BB8900F74163 /* Card+RecordingHelpers.m in Sources */,
+				24F398AB17A3A92C0057DB03 /* TCCardViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,11 +320,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24F398B017A3AF010057DB03 /* TCCardCollectionViewController.m in Sources */,
 				24F29F9C17994C8200BDA4AC /* ThunderCard.xcdatamodeld in Sources */,
 				24F29F901798DDC100BDA4AC /* ThunderCardTests.m in Sources */,
 				2410C63617A2BB8900F74163 /* Card+RecordingHelpers.m in Sources */,
 				24F29FA017994EA200BDA4AC /* Recording.m in Sources */,
 				24F29FA417994EA200BDA4AC /* Card.m in Sources */,
+				24F398AC17A3A92C0057DB03 /* TCCardViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,7 +31,7 @@
 
 - (NSString *)recordingFilename
 {
-    return @"xxx_recording.caf"; // xxx should be based on unique ID of current Card object.
+    return @"xxx_recording.m4a"; // xxx should be based on unique ID of current Card object.
 }
 
 @end

@@ -15,6 +15,7 @@
 
 #import <AVFoundation/AVAudioRecorder.h>
 #import <AVFoundation/AVAudioPlayer.h>
+#import <AVFoundation/AVAudioSession.h>
 
 @interface TCViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
@@ -36,6 +37,8 @@
 
     [self statusStopRecording];
     self.textLabel.text = self.card.text;
+    BOOL success = [self.audioRecorder prepareToRecord];
+    NSLog(@"PrepareToRecord: %d", success);
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,15 +58,17 @@
     if (!_audioRecorder) {
         NSError *error = nil;
         NSURL *url = self.card.recordingURL;
-        NSDictionary *settings = @{AVEncoderAudioQualityKey: [NSNumber numberWithInt:AVAudioQualityHigh]};
+        NSDictionary *settings = @{AVFormatIDKey: [NSNumber numberWithInt:kAudioFormatMPEG4AAC],
+                                   AVSampleRateKey: [NSNumber numberWithFloat:44100.0],
+                                   AVNumberOfChannelsKey: [NSNumber numberWithInt:1],
+                                   AVEncoderAudioQualityKey: [NSNumber numberWithInt:AVAudioQualityHigh]};
 
         _audioRecorder = [[AVAudioRecorder alloc] initWithURL:url
                                                      settings:settings
                                                         error:&error];
+        NSLog(@"AVAudioRecord init (%@) error: %@, ", _audioRecorder, error);
         _audioRecorder.meteringEnabled = YES;
-        if (!_audioRecorder) {
-            NSLog(@"Error: %@", error);
-        }
+
     }
     return _audioRecorder;
 }
@@ -83,7 +88,8 @@
 - (void)startRecording
 {
     [self statusStartRecording];
-    [self.audioRecorder record];
+    BOOL success =  [self.audioRecorder record];
+    NSLog(@"Audio Recording, success: %d", success);
 }
 
 - (void)stopAndSaveRecording
@@ -103,10 +109,9 @@
     NSData *data = recording.data;
     if (data.length > 0) {
         NSError *error = nil;
-        self.audioPlayer = [[AVAudioPlayer alloc] initWithData:data
-                                                         error:&error];
-        [self.audioPlayer play];
-        NSLog(@"Playing recording");
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithData:data error:&error];
+        BOOL success = [self.audioPlayer play];
+        NSLog(@"Audio playing, success: %d", success);
     }
 }
 
@@ -115,7 +120,7 @@
 - (void)statusStartRecording {
     self.recordingStatusLabel.hidden = NO;
     [self.recordingActivityIndicator startAnimating];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.3
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1
                                                   target:self
                                                 selector:@selector(updateVolumeFeedback)
                                                 userInfo:nil
@@ -132,7 +137,8 @@
 - (void)updateVolumeFeedback {
     [self.audioRecorder updateMeters];
     float level = [self.audioRecorder averagePowerForChannel:0];
-    NSLog(@"Audio level: %f", level);
+    float level2 = [self.audioRecorder averagePowerForChannel:1];
+    NSLog(@"Audio level: %f, %f", level, level2);
 }
 
 #pragma mark - Testing
