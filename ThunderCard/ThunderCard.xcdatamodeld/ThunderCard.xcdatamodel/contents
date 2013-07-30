@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3383" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Card" representedClassName="Card" syncable="YES">
+    <entity name="TCCard" representedClassName="TCCard" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="recording" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recording" inverseName="card" inverseEntity="Recording" syncable="YES"/>
+        <relationship name="recording" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TCRecording" inverseName="card" inverseEntity="TCRecording" syncable="YES"/>
     </entity>
-    <entity name="Recording" representedClassName="Recording" syncable="YES">
+    <entity name="TCRecording" representedClassName="TCRecording" syncable="YES">
         <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="recording" inverseEntity="Card" syncable="YES"/>
+        <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TCCard" inverseName="recording" inverseEntity="TCCard" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Card" positionX="9" positionY="-81" width="128" height="73"/>
-        <element name="Recording" positionX="189" positionY="45" width="128" height="73"/>
+        <element name="TCCard" positionX="9" positionY="-81" width="128" height="73"/>
+        <element name="TCRecording" positionX="250" positionY="-81" width="128" height="73"/>
     </elements>
 </model>

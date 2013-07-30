@@ -1,16 +1,16 @@
 //
-//  Card.m
+//  TCCard.m
 //  ThunderCard
 //
-//  Created by Thomas Pun on 7/19/13.
+//  Created by Thomas Pun on 7/30/13.
 //  Copyright (c) 2013 Thomas Pun. All rights reserved.
 //
 
-#import "Card.h"
-#import "Recording.h"
+#import "TCCard.h"
+#import "TCRecording.h"
 
 
-@implementation Card
+@implementation TCCard
 
 @dynamic text;
 @dynamic recording;

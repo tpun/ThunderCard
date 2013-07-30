@@ -1,15 +1,15 @@
 //
-//  Card+RecordingHelpers.m
+//  TCCard+RecordingHelpers.m
 //  ThunderCard
 //
-//  Created by Thomas Pun on 7/24/13.
+//  Created by Thomas Pun on 7/30/13.
 //  Copyright (c) 2013 Thomas Pun. All rights reserved.
 //
 
-#import "Card+RecordingHelpers.h"
-#import "Recording.h"
+#import "TCCard+RecordingHelpers.h"
+#import "TCRecording.h"
 
-@implementation Card (RecordingHelpers)
+@implementation TCCard (RecordingHelpers)
 
 - (NSURL *)recordingURL
 {
@@ -21,8 +21,8 @@
 - (void)saveRecording:(NSURL *)fromURL
 {
     if (!self.recording) {
-        Recording *recording = [NSEntityDescription insertNewObjectForEntityForName:@"Recording"
-                                                             inManagedObjectContext:self.managedObjectContext];
+        TCRecording *recording = [NSEntityDescription insertNewObjectForEntityForName:@"TCRecording"
+                                                               inManagedObjectContext:self.managedObjectContext];
         self.recording = recording;
     }
 

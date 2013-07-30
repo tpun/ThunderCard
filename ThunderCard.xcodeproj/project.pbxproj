@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2410C63517A2BB8900F74163 /* Card+RecordingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2410C63417A2BB8900F74163 /* Card+RecordingHelpers.m */; };
-		2410C63617A2BB8900F74163 /* Card+RecordingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2410C63417A2BB8900F74163 /* Card+RecordingHelpers.m */; };
+		242AA28817A8189B00520F23 /* TCCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 242AA28717A8189B00520F23 /* TCCard.m */; };
+		242AA28917A8189B00520F23 /* TCCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 242AA28717A8189B00520F23 /* TCCard.m */; };
+		242AA28C17A8189C00520F23 /* TCRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = 242AA28B17A8189C00520F23 /* TCRecording.m */; };
+		242AA28D17A8189C00520F23 /* TCRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = 242AA28B17A8189C00520F23 /* TCRecording.m */; };
+		242AA29017A818D600520F23 /* TCCard+RecordingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 242AA28F17A818D600520F23 /* TCCard+RecordingHelpers.m */; };
+		242AA29117A818D600520F23 /* TCCard+RecordingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 242AA28F17A818D600520F23 /* TCCard+RecordingHelpers.m */; };
 		2464152917A019A300B4B0B7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2464152817A019A300B4B0B7 /* AVFoundation.framework */; };
 		2464152A17A019A300B4B0B7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2464152817A019A300B4B0B7 /* AVFoundation.framework */; };
 		24F29F651798DDC100BDA4AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F29F641798DDC100BDA4AC /* Foundation.framework */; };
@@ -27,10 +31,6 @@
 		24F29F901798DDC100BDA4AC /* ThunderCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29F8F1798DDC100BDA4AC /* ThunderCardTests.m */; };
 		24F29F9B17994C8200BDA4AC /* ThunderCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24F29F9917994C8200BDA4AC /* ThunderCard.xcdatamodeld */; };
 		24F29F9C17994C8200BDA4AC /* ThunderCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24F29F9917994C8200BDA4AC /* ThunderCard.xcdatamodeld */; };
-		24F29F9F17994EA200BDA4AC /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29F9E17994EA200BDA4AC /* Recording.m */; };
-		24F29FA017994EA200BDA4AC /* Recording.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29F9E17994EA200BDA4AC /* Recording.m */; };
-		24F29FA317994EA200BDA4AC /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29FA217994EA200BDA4AC /* Card.m */; };
-		24F29FA417994EA200BDA4AC /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29FA217994EA200BDA4AC /* Card.m */; };
 		24F2A0291799892900BDA4AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F2A0281799892900BDA4AC /* CoreData.framework */; };
 		24F2A02A1799892900BDA4AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F2A0281799892900BDA4AC /* CoreData.framework */; };
 		24F398AB17A3A92C0057DB03 /* TCCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F398AA17A3A92C0057DB03 /* TCCardViewCell.m */; };
@@ -50,8 +50,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2410C63317A2BB8900F74163 /* Card+RecordingHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Card+RecordingHelpers.h"; path = "Models/Card+RecordingHelpers.h"; sourceTree = "<group>"; };
-		2410C63417A2BB8900F74163 /* Card+RecordingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Card+RecordingHelpers.m"; path = "Models/Card+RecordingHelpers.m"; sourceTree = "<group>"; };
+		242AA28617A8189B00520F23 /* TCCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCCard.h; path = Models/TCCard.h; sourceTree = "<group>"; };
+		242AA28717A8189B00520F23 /* TCCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCCard.m; path = Models/TCCard.m; sourceTree = "<group>"; };
+		242AA28A17A8189C00520F23 /* TCRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCRecording.h; path = Models/TCRecording.h; sourceTree = "<group>"; };
+		242AA28B17A8189C00520F23 /* TCRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCRecording.m; path = Models/TCRecording.m; sourceTree = "<group>"; };
+		242AA28E17A818D600520F23 /* TCCard+RecordingHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TCCard+RecordingHelpers.h"; path = "Models/TCCard+RecordingHelpers.h"; sourceTree = "<group>"; };
+		242AA28F17A818D600520F23 /* TCCard+RecordingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TCCard+RecordingHelpers.m"; path = "Models/TCCard+RecordingHelpers.m"; sourceTree = "<group>"; };
 		2464152817A019A300B4B0B7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		24F29F611798DDC100BDA4AC /* ThunderCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThunderCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F29F641798DDC100BDA4AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -73,10 +77,6 @@
 		24F29F8D1798DDC100BDA4AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24F29F8F1798DDC100BDA4AC /* ThunderCardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThunderCardTests.m; sourceTree = "<group>"; };
 		24F29F9A17994C8200BDA4AC /* ThunderCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ThunderCard.xcdatamodel; sourceTree = "<group>"; };
-		24F29F9D17994EA200BDA4AC /* Recording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recording.h; path = Models/Recording.h; sourceTree = "<group>"; };
-		24F29F9E17994EA200BDA4AC /* Recording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recording.m; path = Models/Recording.m; sourceTree = "<group>"; };
-		24F29FA117994EA200BDA4AC /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Models/Card.h; sourceTree = "<group>"; };
-		24F29FA217994EA200BDA4AC /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Models/Card.m; sourceTree = "<group>"; };
 		24F2A0281799892900BDA4AC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		24F398A917A3A92C0057DB03 /* TCCardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCardViewCell.h; sourceTree = "<group>"; };
 		24F398AA17A3A92C0057DB03 /* TCCardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCardViewCell.m; sourceTree = "<group>"; };
@@ -196,12 +196,12 @@
 		24F29FA517994EAD00BDA4AC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2410C63317A2BB8900F74163 /* Card+RecordingHelpers.h */,
-				2410C63417A2BB8900F74163 /* Card+RecordingHelpers.m */,
-				24F29FA117994EA200BDA4AC /* Card.h */,
-				24F29FA217994EA200BDA4AC /* Card.m */,
-				24F29F9D17994EA200BDA4AC /* Recording.h */,
-				24F29F9E17994EA200BDA4AC /* Recording.m */,
+				242AA28A17A8189C00520F23 /* TCRecording.h */,
+				242AA28B17A8189C00520F23 /* TCRecording.m */,
+				242AA28617A8189B00520F23 /* TCCard.h */,
+				242AA28717A8189B00520F23 /* TCCard.m */,
+				242AA28E17A818D600520F23 /* TCCard+RecordingHelpers.h */,
+				242AA28F17A818D600520F23 /* TCCard+RecordingHelpers.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -304,14 +304,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24F29F9F17994EA200BDA4AC /* Recording.m in Sources */,
+				242AA28C17A8189C00520F23 /* TCRecording.m in Sources */,
+				242AA28817A8189B00520F23 /* TCCard.m in Sources */,
 				24F29F9B17994C8200BDA4AC /* ThunderCard.xcdatamodeld in Sources */,
 				24F29F7B1798DDC100BDA4AC /* TCViewController.m in Sources */,
 				24F29F711798DDC100BDA4AC /* main.m in Sources */,
 				24F398AF17A3AF010057DB03 /* TCCardCollectionViewController.m in Sources */,
 				24F29F751798DDC100BDA4AC /* TCAppDelegate.m in Sources */,
-				24F29FA317994EA200BDA4AC /* Card.m in Sources */,
-				2410C63517A2BB8900F74163 /* Card+RecordingHelpers.m in Sources */,
+				242AA29017A818D600520F23 /* TCCard+RecordingHelpers.m in Sources */,
 				24F398AB17A3A92C0057DB03 /* TCCardViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,12 +320,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				242AA29117A818D600520F23 /* TCCard+RecordingHelpers.m in Sources */,
 				24F398B017A3AF010057DB03 /* TCCardCollectionViewController.m in Sources */,
 				24F29F9C17994C8200BDA4AC /* ThunderCard.xcdatamodeld in Sources */,
+				242AA28D17A8189C00520F23 /* TCRecording.m in Sources */,
 				24F29F901798DDC100BDA4AC /* ThunderCardTests.m in Sources */,
-				2410C63617A2BB8900F74163 /* Card+RecordingHelpers.m in Sources */,
-				24F29FA017994EA200BDA4AC /* Recording.m in Sources */,
-				24F29FA417994EA200BDA4AC /* Card.m in Sources */,
+				242AA28917A8189B00520F23 /* TCCard.m in Sources */,
 				24F398AC17A3A92C0057DB03 /* TCCardViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

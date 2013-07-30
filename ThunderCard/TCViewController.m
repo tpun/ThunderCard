@@ -9,9 +9,9 @@
 #import "TCViewController.h"
 #import "TCAppDelegate.h"
 
-#import "Card.h"
-#import "Card+RecordingHelpers.h"
-#import "Recording.h"
+#import "TCCard.h"
+#import "TCCard+RecordingHelpers.h"
+#import "TCRecording.h"
 
 #import <AVFoundation/AVAudioRecorder.h>
 #import <AVFoundation/AVAudioPlayer.h>
@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *recordingStatusLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *recordingActivityIndicator;
 
-@property (strong, nonatomic) Card *card;
+@property (strong, nonatomic) TCCard *card;
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) NSTimer *timer;
@@ -47,7 +47,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (Card *)card
+- (TCCard *)card
 {
     if (!_card) { _card = [self randomCard]; }
     return _card;
@@ -105,7 +105,7 @@
 }
 
 - (IBAction)playRecording:(UITapGestureRecognizer *)sender {
-    Recording *recording = self.card.recording;
+    TCRecording *recording = self.card.recording;
     NSData *data = recording.data;
     if (data.length > 0) {
         NSError *error = nil;
@@ -143,14 +143,14 @@
 
 #pragma mark - Testing
 
-- (Card *)randomCard
+- (TCCard *)randomCard
 {
     TCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext = [delegate managedObjectContext];
 
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity =
-    [NSEntityDescription entityForName:@"Card"
+    [NSEntityDescription entityForName:@"TCCard"
                 inManagedObjectContext:managedObjectContext];
     [request setEntity:entity];
     [request setPredicate:NULL];

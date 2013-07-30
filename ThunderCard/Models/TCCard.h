@@ -1,19 +1,19 @@
 //
-//  Card.h
+//  TCCard.h
 //  ThunderCard
 //
-//  Created by Thomas Pun on 7/19/13.
+//  Created by Thomas Pun on 7/30/13.
 //  Copyright (c) 2013 Thomas Pun. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Recording;
+@class TCRecording;
 
-@interface Card : NSManagedObject
+@interface TCCard : NSManagedObject
 
 @property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) Recording *recording;
+@property (nonatomic, retain) TCRecording *recording;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "TCAppDelegate.h"
-#import "Card.h"
+#import "TCCard.h"
 
 @implementation TCAppDelegate
 
@@ -18,12 +18,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    Card *card = [NSEntityDescription insertNewObjectForEntityForName:@"Card"
-                                               inManagedObjectContext:managedObjectContext];
+    TCCard *card = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
+                                                 inManagedObjectContext:managedObjectContext];
     card.text = @"內容";
 
-    Card *card2 = [NSEntityDescription insertNewObjectForEntityForName:@"Card"
-                                                inManagedObjectContext:managedObjectContext];
+    TCCard *card2 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
+                                                  inManagedObjectContext:managedObjectContext];
     card2.text = @"中文";
 
 //    Card *card3 = [NSEntityDescription insertNewObjectForEntityForName:@"Card"
