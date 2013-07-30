@@ -33,12 +33,35 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to play, hold to record" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="193" translatesAutoresizingMaskIntoConstraints="NO" id="GQt-ik-sHK">
+                                            <rect key="frame" x="64" y="449" width="193" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recording..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8t-Ap-cyJ">
+                                            <rect key="frame" x="128" y="241" width="93" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="92f-Rb-5aa">
+                                            <rect key="frame" x="100" y="242" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <connections>
+                                    <outlet property="statusActivityIndicator" destination="92f-Rb-5aa" id="Xd2-fE-msx"/>
+                                    <outlet property="statusLabel" destination="i8t-Ap-cyJ" id="LAC-Be-L8v"/>
                                     <outlet property="textLabel" destination="Xuv-Rs-8cI" id="8TE-wJ-8pc"/>
+                                    <outletCollection property="gestureRecognizers" destination="c7t-L1-eGs" appends="YES" id="nJZ-mH-g8T"/>
+                                    <outletCollection property="gestureRecognizers" destination="ocM-wz-Mq6" appends="YES" id="Uk5-1v-Ude"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -51,6 +74,16 @@
                     <navigationItem key="navigationItem" title="ThunderCard" id="Hy9-J0-QUe"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IUf-nw-hEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="c7t-L1-eGs">
+                    <connections>
+                        <action selector="playRecording:" destination="AWa-G2-4B8" id="DhI-Xx-OHQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ocM-wz-Mq6">
+                    <connections>
+                        <action selector="startOrStopRecording:" destination="AWa-G2-4B8" id="ITR-f4-gwG"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="854" y="470"/>
         </scene>

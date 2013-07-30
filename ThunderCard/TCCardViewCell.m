@@ -28,4 +28,16 @@
 }
 */
 
+- (void)startRecording
+{
+    self.statusLabel.hidden = NO;
+    [self.statusActivityIndicator startAnimating];
+}
+
+- (void)stopRecording
+{
+    self.statusLabel.hidden = YES;
+    [self.statusActivityIndicator stopAnimating];
+}
+
 @end

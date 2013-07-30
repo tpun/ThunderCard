@@ -10,4 +10,9 @@
 
 @interface TCCardViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *statusActivityIndicator;
+
+- (void)startRecording;
+- (void)stopRecording;
 @end
