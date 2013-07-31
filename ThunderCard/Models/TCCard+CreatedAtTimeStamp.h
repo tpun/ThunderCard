@@ -1,5 +1,5 @@
 //
-//  TCCard.m
+//  TCCard+CreatedAtTimeStamp.h
 //  ThunderCard
 //
 //  Created by Thomas Pun on 7/31/13.
@@ -7,13 +7,7 @@
 //
 
 #import "TCCard.h"
-#import "TCRecording.h"
 
-
-@implementation TCCard
-
-@dynamic text;
-@dynamic createdAt;
-@dynamic recording;
+@interface TCCard (CreatedAtTimeStamp)
 
 @end
