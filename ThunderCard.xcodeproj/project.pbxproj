@@ -17,6 +17,8 @@
 		24AC9FDB17A9013B00051451 /* TCCard+CreatedAtTimeStamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC9FD917A9013B00051451 /* TCCard+CreatedAtTimeStamp.m */; };
 		24AC9FDE17A901AE00051451 /* TCCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC9FDD17A901AE00051451 /* TCCard.m */; };
 		24AC9FDF17A901AE00051451 /* TCCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC9FDD17A901AE00051451 /* TCCard.m */; };
+		24AC9FE217A9066D00051451 /* TCCardCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC9FE117A9066D00051451 /* TCCardCollection.m */; };
+		24AC9FE317A9066D00051451 /* TCCardCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC9FE117A9066D00051451 /* TCCardCollection.m */; };
 		24F29F651798DDC100BDA4AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F29F641798DDC100BDA4AC /* Foundation.framework */; };
 		24F29F671798DDC100BDA4AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F29F661798DDC100BDA4AC /* CoreGraphics.framework */; };
 		24F29F691798DDC100BDA4AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F29F681798DDC100BDA4AC /* UIKit.framework */; };
@@ -61,6 +63,8 @@
 		24AC9FD917A9013B00051451 /* TCCard+CreatedAtTimeStamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TCCard+CreatedAtTimeStamp.m"; path = "Models/TCCard+CreatedAtTimeStamp.m"; sourceTree = "<group>"; };
 		24AC9FDC17A901AE00051451 /* TCCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCCard.h; path = Models/TCCard.h; sourceTree = "<group>"; };
 		24AC9FDD17A901AE00051451 /* TCCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCCard.m; path = Models/TCCard.m; sourceTree = "<group>"; };
+		24AC9FE017A9066D00051451 /* TCCardCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCCardCollection.h; path = Models/TCCardCollection.h; sourceTree = "<group>"; };
+		24AC9FE117A9066D00051451 /* TCCardCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCCardCollection.m; path = Models/TCCardCollection.m; sourceTree = "<group>"; };
 		24F29F611798DDC100BDA4AC /* ThunderCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThunderCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F29F641798DDC100BDA4AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		24F29F661798DDC100BDA4AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -208,6 +212,8 @@
 				24AC9FD917A9013B00051451 /* TCCard+CreatedAtTimeStamp.m */,
 				242AA28E17A818D600520F23 /* TCCard+RecordingHelpers.h */,
 				242AA28F17A818D600520F23 /* TCCard+RecordingHelpers.m */,
+				24AC9FE017A9066D00051451 /* TCCardCollection.h */,
+				24AC9FE117A9066D00051451 /* TCCardCollection.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 				242AA29017A818D600520F23 /* TCCard+RecordingHelpers.m in Sources */,
 				24F398AB17A3A92C0057DB03 /* TCCardViewCell.m in Sources */,
 				24AC9FDA17A9013B00051451 /* TCCard+CreatedAtTimeStamp.m in Sources */,
+				24AC9FE217A9066D00051451 /* TCCardCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +342,7 @@
 				242AA28D17A8189C00520F23 /* TCRecording.m in Sources */,
 				24F29F901798DDC100BDA4AC /* ThunderCardTests.m in Sources */,
 				24F398AC17A3A92C0057DB03 /* TCCardViewCell.m in Sources */,
+				24AC9FE317A9066D00051451 /* TCCardCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

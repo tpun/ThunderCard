@@ -8,9 +8,13 @@
 
 #import "TCCardCollectionViewController.h"
 #import "TCCardViewCell.h"
+#import "TCCardCollection.h"
+#import "TCCard.h"
+#import "TCAppDelegate.h"
 
 @interface TCCardCollectionViewController ()
 @property (strong, readonly, nonatomic) TCCardViewCell *currentCardView;
+@property (strong, nonatomic) TCCardCollection *cardCollection;
 @end
 
 @implementation TCCardCollectionViewController
@@ -38,15 +42,19 @@
 
 #pragma mark - Card Management
 
-- (TCCardViewCell *)currentCardView
+- (TCCardCollection *)cardCollection
 {
-    NSArray *cells = [self.collectionView visibleCells];
-    return cells.firstObject;
+    if (!_cardCollection) {
+        TCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *managedObjectContext = [delegate managedObjectContext];
+        _cardCollection = [[TCCardCollection alloc] initWithManagedContext:managedObjectContext];
+    }
+    return _cardCollection;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 4;
+    return [self.cardCollection.sortedCards count];
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -54,38 +62,46 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CardCell" forIndexPath:indexPath];
     TCCardViewCell *cardViewCell = (TCCardViewCell *) cell;
-    cardViewCell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    TCCard *card = [self.cardCollection.sortedCards objectAtIndex:indexPath.row];
+
+    cardViewCell.textLabel.text = card.text;
     return cell;
 }
 
 #pragma mark - Recording
 
 - (IBAction)startOrStopRecording:(UILongPressGestureRecognizer *)sender {
+    TCCardViewCell *cardView = (TCCardViewCell *)sender.view;
+    // indexPathForCell sometimes return nil
+    // NSIndexPath *indexPath = [self.collectionView indexPathForCell:cardView];
+    NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems] firstObject];
+    TCCard *card = [self.cardCollection.sortedCards objectAtIndex:indexPath.row];
+
     if (sender.state == UIGestureRecognizerStateBegan) {
-        [self startRecording];
+        [self startRecordingFor:card inView:cardView];
     } else if (sender.state == UIGestureRecognizerStateEnded) {
-        [self stopAndSaveRecording];
+        [self stopAndSaveRecordingFor:card inView:cardView];
     } else if (sender.state != UIGestureRecognizerStateChanged) {
-        [self stopRecording];
+        [self stopRecordingFor:card inView:cardView];
     }
 }
 
-- (void)startRecording
+- (void)startRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
 {
-    [self.currentCardView startRecording];
-    NSLog(@"startRecording");
+    [cardView startRecording];
+    NSLog(@"startRecording for %@", card.text);
 }
 
-- (void)stopAndSaveRecording
+- (void)stopAndSaveRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
 {
-    [self stopRecording];
-    NSLog(@"saveRecording");
+    [self stopRecordingFor:card inView:cardView];
+    NSLog(@"saveRecording for %@", card.text);
 }
 
-- (void)stopRecording
+- (void)stopRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
 {
-    [self.currentCardView stopRecording];
-    NSLog(@"stopRecording");
+    [cardView stopRecording];
+    NSLog(@"stopRecording for %@", card.text);
 }
 
 - (IBAction)playRecording:(UITapGestureRecognizer *)sender {
