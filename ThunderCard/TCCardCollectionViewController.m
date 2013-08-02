@@ -10,11 +10,19 @@
 #import "TCCardViewCell.h"
 #import "TCCardCollection.h"
 #import "TCCard.h"
+#import "TCCard+RecordingHelpers.h"
+#import "TCRecording.h"
 #import "TCAppDelegate.h"
+#import <AVFoundation/AVAudioRecorder.h>
+#import <AVFoundation/AVAudioPlayer.h>
+#import <AVFoundation/AVAudioSession.h>
 
 @interface TCCardCollectionViewController ()
 @property (strong, readonly, nonatomic) TCCardViewCell *currentCardView;
 @property (strong, nonatomic) TCCardCollection *cardCollection;
+@property (strong, nonatomic) AVAudioRecorder *audioRecorder;
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
+@property (strong, nonatomic) NSTimer *timer;
 @end
 
 @implementation TCCardCollectionViewController
@@ -52,6 +60,12 @@
     return _cardCollection;
 }
 
+- (TCCard *)cardFromView:(TCCardViewCell *)cardView
+{
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cardView];
+    return [self.cardCollection.sortedCards objectAtIndex:indexPath.row];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [self.cardCollection.sortedCards count];
@@ -68,14 +82,12 @@
     return cell;
 }
 
-#pragma mark - Recording
+#pragma mark - Audio Recording / Playing
 
 - (IBAction)startOrStopRecording:(UILongPressGestureRecognizer *)sender {
-    TCCardViewCell *cardView = (TCCardViewCell *)sender.view;
-    // indexPathForCell sometimes return nil
-    // NSIndexPath *indexPath = [self.collectionView indexPathForCell:cardView];
-    NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems] firstObject];
-    TCCard *card = [self.cardCollection.sortedCards objectAtIndex:indexPath.row];
+    // TCCardViewCell *cardView = (TCCardViewCell *)sender.view;
+    TCCardViewCell *cardView = [[self.collectionView visibleCells] firstObject];
+    TCCard *card = [self cardFromView:cardView];
 
     if (sender.state == UIGestureRecognizerStateBegan) {
         [self startRecordingFor:card inView:cardView];
@@ -89,23 +101,29 @@
 - (void)startRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
 {
     [cardView startRecording];
-    NSLog(@"startRecording for %@", card.text);
+    self.audioRecorder = card.audioRecorder;
+    [self.audioRecorder record];
 }
 
 - (void)stopAndSaveRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
 {
     [self stopRecordingFor:card inView:cardView];
-    NSLog(@"saveRecording for %@", card.text);
+    [card saveRecording:self.audioRecorder.url];
 }
 
 - (void)stopRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
 {
     [cardView stopRecording];
-    NSLog(@"stopRecording for %@", card.text);
+    [self.audioRecorder stop];
 }
 
 - (IBAction)playRecording:(UITapGestureRecognizer *)sender {
-    NSLog(@"playRecording");
+    // TCCardViewCell *cardView = (TCCardViewCell *)sender.view;
+    TCCardViewCell *cardView = [[self.collectionView visibleCells] firstObject];
+    TCCard *card = [self cardFromView:cardView];
+
+    self.audioPlayer = card.audioPlayer;
+    [self.audioPlayer play];
 }
 
 
