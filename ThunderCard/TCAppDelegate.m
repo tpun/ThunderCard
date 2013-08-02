@@ -8,6 +8,7 @@
 
 #import "TCAppDelegate.h"
 #import "TCCard.h"
+#import "TCCardCollection.h"
 
 @implementation TCAppDelegate
 
@@ -18,19 +19,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    TCCard *card = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
-                                                 inManagedObjectContext:managedObjectContext];
-    card.text = @"內容";
+    TCCardCollection *collection = [[TCCardCollection alloc] initWithManagedContext:managedObjectContext];
+    if (collection.sortedCards.count == 0) {
 
-    TCCard *card2 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
-                                                  inManagedObjectContext:managedObjectContext];
-    card2.text = @"中文";
+        TCCard *card = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
+                                                     inManagedObjectContext:managedObjectContext];
+        card.text = @"內容";
 
-//    Card *card3 = [NSEntityDescription insertNewObjectForEntityForName:@"Card"
-//                                                inManagedObjectContext:managedObjectContext];
-//    card3.text = @"testing";
+        TCCard *card2 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
+                                                      inManagedObjectContext:managedObjectContext];
+        card2.text = @"中文";
+
+        TCCard *card3 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
+                                                      inManagedObjectContext:managedObjectContext];
+        card3.text = @"華光";
 
     [managedObjectContext save:NULL];
+    }
 
 //    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Card"];
 //    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"text contains %@", @"testing"];
