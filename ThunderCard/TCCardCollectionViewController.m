@@ -18,7 +18,6 @@
 #import <AVFoundation/AVAudioSession.h>
 
 @interface TCCardCollectionViewController ()
-@property (strong, readonly, nonatomic) TCCardViewCell *currentCardView;
 @property (strong, nonatomic) TCCardCollection *cardCollection;
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
@@ -60,10 +59,20 @@
     return _cardCollection;
 }
 
-- (TCCard *)cardFromView:(TCCardViewCell *)cardView
+- (TCCard *)cardFromViewCell:(TCCardViewCell *)cardViewCell
 {
-    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cardView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cardViewCell];
     return [self.cardCollection.sortedCards objectAtIndex:indexPath.row];
+}
+
+- (TCCardViewCell *)currentCardViewCell
+{
+    return [[self.collectionView visibleCells] firstObject];
+}
+
+- (TCCard *)currentCard
+{
+    return [self cardFromViewCell:[self currentCardViewCell]];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -85,9 +94,8 @@
 #pragma mark - Audio Recording / Playing
 
 - (IBAction)startOrStopRecording:(UILongPressGestureRecognizer *)sender {
-    // TCCardViewCell *cardView = (TCCardViewCell *)sender.view;
-    TCCardViewCell *cardView = [[self.collectionView visibleCells] firstObject];
-    TCCard *card = [self cardFromView:cardView];
+    TCCardViewCell *cardView = [self currentCardViewCell];
+    TCCard *card = [self currentCard];
 
     if (sender.state == UIGestureRecognizerStateBegan) {
         [self startRecordingFor:card inView:cardView];
@@ -118,9 +126,7 @@
 }
 
 - (IBAction)playRecording:(UITapGestureRecognizer *)sender {
-    // TCCardViewCell *cardView = (TCCardViewCell *)sender.view;
-    TCCardViewCell *cardView = [[self.collectionView visibleCells] firstObject];
-    TCCard *card = [self cardFromView:cardView];
+    TCCard *card = [self currentCard];
 
     self.audioPlayer = card.audioPlayer;
     [self.audioPlayer play];
