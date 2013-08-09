@@ -55,7 +55,7 @@
     if (!recorder) NSLog(@"Failed to init recorder: error: %@", error);
     recorder.meteringEnabled = YES;
     BOOL success = [recorder prepareToRecord];
-    if (!success)  NSLog(@"Failed to prepare for recording");
+    if (!success)  NSLog(@"Failed to prepare for recording with %@", settings);
 
     return recorder;
 }
