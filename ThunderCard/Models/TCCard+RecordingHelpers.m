@@ -46,11 +46,11 @@
     AVAudioRecorder *recorder = [[AVAudioRecorder alloc] initWithURL:self.recordingURL
                                                             settings:settings
                                                                error:&error];
+    if (!recorder) NSLog(@"Failed to init recorder: error: %@", error);
     recorder.meteringEnabled = YES;
-    [recorder prepareToRecord];
-    if (!recorder) {
-        NSLog(@"FAILED to init recorder: error: %@", error);
-    }
+    BOOL success = [recorder prepareToRecord];
+    if (!success)  NSLog(@"Failed to prepare for recording");
+
     return recorder;
 }
 
@@ -58,14 +58,16 @@
 {
     AVAudioPlayer *player = nil;
     NSData *data = self.recording.data;
-    if (data.length >0) {
+    if (data.length > 0) {
         NSError *error = nil;
         player = [[AVAudioPlayer alloc] initWithData:data error:&error];
         if (!player) {
-            NSLog(@"FAILED to init player: error: %@", error);
+            NSLog(@"Failed to init player: error: %@", error);
         }
     }
-    [player prepareToPlay];
+    BOOL success = [player prepareToPlay];
+    if (!success) NSLog(@"Failed to prepare for playback");
+
     return player;
 }
 @end
