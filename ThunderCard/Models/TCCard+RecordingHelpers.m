@@ -18,7 +18,7 @@
     return [NSURL fileURLWithPath:tmpFile];
 }
 
-- (void)saveRecording:(NSURL *)fromURL
+- (BOOL)saveRecording:(NSURL *)fromURL
 {
     if (!self.recording) {
         TCRecording *recording = [NSEntityDescription insertNewObjectForEntityForName:@"TCRecording"
@@ -27,7 +27,13 @@
     }
 
     self.recording.data = [NSData dataWithContentsOfURL:fromURL];
-    [self.managedObjectContext save:nil];
+    return [self.managedObjectContext save:nil];
+}
+
+- (BOOL)hasRecording
+{
+    // TODO: TCRecording should implement hasRecording
+    return (self.recording.data.length > 0);
 }
 
 - (NSString *)recordingFilename

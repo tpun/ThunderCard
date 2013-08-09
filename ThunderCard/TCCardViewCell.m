@@ -8,6 +8,12 @@
 
 #import "TCCardViewCell.h"
 
+@interface TCCardViewCell()
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *statusActivityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *helperLabel;
+@end
+
 @implementation TCCardViewCell
 
 - (id)initWithFrame:(CGRect)frame
@@ -38,6 +44,17 @@
 {
     self.statusLabel.hidden = YES;
     [self.statusActivityIndicator stopAnimating];
+}
+
+- (void)setHasRecording:(BOOL)hasRecording
+{
+    _hasRecording = hasRecording;
+    if (_hasRecording) {
+        self.helperLabel.text = @"Tap to play. Hold to record.";
+    } else {
+        self.helperLabel.text = @"Hold to record.";
+    }
+    [self setNeedsDisplay];
 }
 
 @end

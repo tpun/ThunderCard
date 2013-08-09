@@ -15,5 +15,6 @@
 @property (readonly, nonatomic) NSURL *recordingURL;
 @property (readonly, nonatomic) AVAudioRecorder *audioRecorder;
 @property (readonly, nonatomic) AVAudioPlayer *audioPlayer;
-- (void)saveRecording:(NSURL *)fromURL;
+- (BOOL)saveRecording:(NSURL *)fromURL;
+- (BOOL)hasRecording;
 @end

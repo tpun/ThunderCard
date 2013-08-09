@@ -88,6 +88,7 @@
     TCCard *card = [self.cardCollection.sortedCards objectAtIndex:indexPath.row];
 
     cardViewCell.textLabel.text = card.text;
+    cardViewCell.hasRecording = card.hasRecording;
     return cell;
 }
 
@@ -116,7 +117,9 @@
 - (void)stopAndSaveRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
 {
     [self stopRecordingFor:card inView:cardView];
-    [card saveRecording:self.audioRecorder.url];
+    if ([card saveRecording:self.audioRecorder.url]) {
+        cardView.hasRecording = card.hasRecording;
+    }
 }
 
 - (void)stopRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
