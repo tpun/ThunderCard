@@ -67,12 +67,11 @@
     if (data.length > 0) {
         NSError *error = nil;
         player = [[AVAudioPlayer alloc] initWithData:data error:&error];
-        if (!player) {
-            NSLog(@"Failed to init player: error: %@", error);
-        }
+        if (!player) NSLog(@"Failed to init player: error: %@", error);
+
+        BOOL success = [player prepareToPlay];
+        if (!success) NSLog(@"Failed to prepare for playback");
     }
-    BOOL success = [player prepareToPlay];
-    if (!success) NSLog(@"Failed to prepare for playback");
 
     return player;
 }
