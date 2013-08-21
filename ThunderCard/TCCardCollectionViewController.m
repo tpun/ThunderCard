@@ -38,7 +38,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self updateTitle];
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+}
+
+- (void)updateTitle
+{
+    self.navigationItem.title = [NSString stringWithFormat:@"%d ThunderCards", self.cardCollection.sortedCards.count];
 }
 
 - (void)didReceiveMemoryWarning
@@ -167,6 +173,7 @@
                                                  inManagedObjectContext:self.cardCollection.managedObjectContext];
     card.text = text;
     [self.cardCollection reload];
+    [self updateTitle];
     NSIndexPath *latestPath = [NSIndexPath indexPathForItem:self.cardCollection.sortedCards.count-1
                                                   inSection:0];
     [self.collectionView insertItemsAtIndexPaths:@[latestPath]];
