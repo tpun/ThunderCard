@@ -28,11 +28,11 @@
 
         TCCard *card2 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
                                                       inManagedObjectContext:managedObjectContext];
-        card2.text = @"中文";
+        card2.text = @"中文字";
 
         TCCard *card3 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
                                                       inManagedObjectContext:managedObjectContext];
-        card3.text = @"華光";
+        card3.text = @"華光創投";
 
     [managedObjectContext save:NULL];
     }
