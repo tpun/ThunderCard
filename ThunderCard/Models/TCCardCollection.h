@@ -12,4 +12,5 @@
 @property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, nonatomic) NSArray *sortedCards;
 - (TCCardCollection *)initWithManagedContext:(NSManagedObjectContext *)managedObjectContext;
+- (void)reload;
 @end

@@ -73,7 +73,13 @@
                         </connections>
                     </collectionView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="ThunderCard" id="Hy9-J0-QUe"/>
+                    <navigationItem key="navigationItem" title="ThunderCard" id="2RZ-zr-ESf">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="PRy-7s-Z2a">
+                            <connections>
+                                <action selector="addCard:" destination="AWa-G2-4B8" id="HLC-OG-CUX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IUf-nw-hEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="c7t-L1-eGs">

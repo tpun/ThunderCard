@@ -135,5 +135,39 @@
     [self.audioPlayer play];
 }
 
+#pragma mark - Card Creation
+
+- (IBAction)addCard:(UIBarButtonItem *)sender {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"New ThunderCard"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cacnel"
+                                              otherButtonTitles:@"Create", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.placeholder = @"Name of the new card";
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1) {
+        UITextField *textField = [alertView textFieldAtIndex:0];
+        [self createCard:textField.text];
+    }
+}
+
+- (void)createCard:(NSString *)text {
+    TCCard *card = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
+                                                 inManagedObjectContext:self.cardCollection.managedObjectContext];
+    card.text = text;
+    [self.cardCollection reload];
+    NSIndexPath *latestPath = [NSIndexPath indexPathForItem:self.cardCollection.sortedCards.count-1
+                                                  inSection:0];
+    [self.collectionView insertItemsAtIndexPaths:@[latestPath]];
+    [self.collectionView scrollToItemAtIndexPath:latestPath
+                                atScrollPosition:UICollectionViewScrollPositionCenteredVertically & UICollectionViewScrollPositionCenteredHorizontally
+                                        animated:YES];
+}
 
 @end
