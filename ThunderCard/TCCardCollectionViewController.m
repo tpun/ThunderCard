@@ -131,8 +131,13 @@
 - (IBAction)playRecording:(UITapGestureRecognizer *)sender {
     TCCard *card = [self currentCard];
 
-    self.audioPlayer = card.audioPlayer;
-    [self.audioPlayer play];
+    // stop if previously playing
+    if (self.audioPlayer.isPlaying) {
+        [self.audioPlayer stop];
+    } else {
+        self.audioPlayer = card.audioPlayer;
+        [self.audioPlayer play];
+    }
 }
 
 #pragma mark - Card Creation
