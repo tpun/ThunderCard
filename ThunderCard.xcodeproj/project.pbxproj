@@ -26,7 +26,6 @@
 		24F29F711798DDC100BDA4AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29F701798DDC100BDA4AC /* main.m */; };
 		24F29F751798DDC100BDA4AC /* TCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29F741798DDC100BDA4AC /* TCAppDelegate.m */; };
 		24F29F781798DDC100BDA4AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24F29F761798DDC100BDA4AC /* Main.storyboard */; };
-		24F29F7B1798DDC100BDA4AC /* TCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F29F7A1798DDC100BDA4AC /* TCViewController.m */; };
 		24F29F7D1798DDC100BDA4AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24F29F7C1798DDC100BDA4AC /* Images.xcassets */; };
 		24F29F841798DDC100BDA4AC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F29F831798DDC100BDA4AC /* XCTest.framework */; };
 		24F29F851798DDC100BDA4AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F29F641798DDC100BDA4AC /* Foundation.framework */; };
@@ -76,8 +75,6 @@
 		24F29F731798DDC100BDA4AC /* TCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCAppDelegate.h; sourceTree = "<group>"; };
 		24F29F741798DDC100BDA4AC /* TCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCAppDelegate.m; sourceTree = "<group>"; };
 		24F29F771798DDC100BDA4AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		24F29F791798DDC100BDA4AC /* TCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCViewController.h; sourceTree = "<group>"; };
-		24F29F7A1798DDC100BDA4AC /* TCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCViewController.m; sourceTree = "<group>"; };
 		24F29F7C1798DDC100BDA4AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		24F29F821798DDC100BDA4AC /* ThunderCardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThunderCardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F29F831798DDC100BDA4AC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -159,8 +156,6 @@
 				24F29F761798DDC100BDA4AC /* Main.storyboard */,
 				24F29F731798DDC100BDA4AC /* TCAppDelegate.h */,
 				24F29F741798DDC100BDA4AC /* TCAppDelegate.m */,
-				24F29F791798DDC100BDA4AC /* TCViewController.h */,
-				24F29F7A1798DDC100BDA4AC /* TCViewController.m */,
 				24F398A917A3A92C0057DB03 /* TCCardViewCell.h */,
 				24F398AA17A3A92C0057DB03 /* TCCardViewCell.m */,
 				24F398AD17A3AF010057DB03 /* TCCardCollectionViewController.h */,
@@ -318,7 +313,6 @@
 			files = (
 				242AA28C17A8189C00520F23 /* TCRecording.m in Sources */,
 				24F29F9B17994C8200BDA4AC /* ThunderCard.xcdatamodeld in Sources */,
-				24F29F7B1798DDC100BDA4AC /* TCViewController.m in Sources */,
 				24F29F711798DDC100BDA4AC /* main.m in Sources */,
 				24AC9FDE17A901AE00051451 /* TCCard.m in Sources */,
 				24F398AF17A3AF010057DB03 /* TCCardCollectionViewController.m in Sources */,
