@@ -18,34 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    TCCardCollection *collection = [[TCCardCollection alloc] initWithManagedContext:managedObjectContext];
-    if (collection.sortedCards.count == 0) {
-
-        TCCard *card = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
-                                                     inManagedObjectContext:managedObjectContext];
-        card.text = @"內容";
-
-        TCCard *card2 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
-                                                      inManagedObjectContext:managedObjectContext];
-        card2.text = @"中文字";
-
-        TCCard *card3 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
-                                                      inManagedObjectContext:managedObjectContext];
-        card3.text = @"華光創投";
-
-    [managedObjectContext save:NULL];
-    }
-
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Card"];
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"text contains %@", @"testing"];
-//    request.predicate = predicate;
-//
-//    NSError *error;
-//    NSArray *cards = [managedObjectContext executeFetchRequest:request error:&error];
-//    NSLog(@"%@", cards);
-
     // Override point for customization after application launch.
+    [self prepopulateWelcomeCards];
     return YES;
 }
 							
@@ -172,6 +146,30 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - Prepopulate cards
+
+- (void)prepopulateWelcomeCards
+{
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    TCCardCollection *collection = [[TCCardCollection alloc] initWithManagedContext:managedObjectContext];
+    if (collection.sortedCards.count == 0) {
+
+        TCCard *card = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
+                                                     inManagedObjectContext:managedObjectContext];
+        card.text = @"內容";
+
+        TCCard *card2 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
+                                                      inManagedObjectContext:managedObjectContext];
+        card2.text = @"中文字";
+
+        TCCard *card3 = [NSEntityDescription insertNewObjectForEntityForName:@"TCCard"
+                                                      inManagedObjectContext:managedObjectContext];
+        card3.text = @"華光創投";
+
+        [managedObjectContext save:NULL];
+    }
 }
 
 @end
