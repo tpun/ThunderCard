@@ -17,7 +17,7 @@
 #import <AVFoundation/AVAudioPlayer.h>
 #import <AVFoundation/AVAudioSession.h>
 
-@interface TCCardCollectionViewController ()
+@interface TCCardCollectionViewController() <UIActionSheetDelegate>
 @property (strong, nonatomic) TCCardCollection *cardCollection;
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
@@ -26,8 +26,8 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doubleTapRecognizer;
 @end
 
-#define TCCreateCardAlertViewTag 10
-#define TCDeleteCardAlertViewTag 100
+NSString * const TCDeleteCardActionSheetButtonTitle = @"Delete this card";
+NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete recording only";
 
 @implementation TCCardCollectionViewController
 
@@ -167,7 +167,6 @@
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"Create", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alertView.tag = TCCreateCardAlertViewTag;
     UITextField *textField = [alertView textFieldAtIndex:0];
     textField.placeholder = @"Name of the new card";
     [alertView show];
@@ -191,13 +190,16 @@
 #pragma mark - Card Deletion
 
 - (IBAction)confirmCardDeletion:(UITapGestureRecognizer *)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete this card?"
-                                                        message:@"This operation cannot be undone"
-                                                       delegate:self
-                                              cancelButtonTitle:@"No"
-                                              otherButtonTitles:@"Yes", nil];
-    alertView.tag = TCDeleteCardAlertViewTag;
-    [alertView show];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:TCDeleteCardActionSheetButtonTitle
+                                                    otherButtonTitles: nil];
+    if (([self currentCard]).hasRecording) {
+        [actionSheet addButtonWithTitle:TCDeleteRecordingActionSheetButtonTitle];
+    }
+    actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:@"Cancel"];
+    [actionSheet showInView:self.view];
 }
 
 - (void)deleteCurrentCard
@@ -210,19 +212,36 @@
     [self.collectionView deleteItemsAtIndexPaths:@[[self currentCardViewCellIndexPath]]];
 }
 
-#pragma mark - AlertView Delegate
+- (void)deleteCurrentRecording
+{
+    [self deleteRecordingFor:[self currentCard] inView:[self currentCardViewCell]];
+}
+
+- (void)deleteRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
+{
+    TCRecording *recording = card.recording;
+    [self.cardCollection.managedObjectContext deleteObject:recording];
+    [self.cardCollection reload];
+    cardView.hasRecording = NO;
+}
+
+#pragma mark - Delegate
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (alertView.tag==TCCreateCardAlertViewTag) {
-        if (buttonIndex==1) {
-            UITextField *textField = [alertView textFieldAtIndex:0];
-            [self createCard:textField.text];
-        }
-    } else if (alertView.tag==TCDeleteCardAlertViewTag) {
-        if (buttonIndex==1) {
-            [self deleteCurrentCard];
-        }
+    if (buttonIndex==1) {
+        UITextField *textField = [alertView textFieldAtIndex:0];
+        [self createCard:textField.text];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if ([title isEqualToString:TCDeleteCardActionSheetButtonTitle]) {
+        [self deleteCurrentCard];
+    } else if ([title isEqualToString:TCDeleteRecordingActionSheetButtonTitle]) {
+        [self deleteCurrentRecording];
     }
 }
 
