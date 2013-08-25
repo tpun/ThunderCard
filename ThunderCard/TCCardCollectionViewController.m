@@ -127,9 +127,18 @@ NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete this recordi
 
 - (void)startRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
 {
-    [cardView startRecording];
-    self.audioRecorder = card.audioRecorder;
-    [self.audioRecorder record];
+    if (card.hasRecording) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"Please double tap to delete existing recording before proceeding."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles: nil];
+        [alertView show];
+    } else {
+        [cardView startRecording];
+        self.audioRecorder = card.audioRecorder;
+        [self.audioRecorder record];
+    }
 }
 
 - (void)stopAndSaveRecordingFor:(TCCard *)card inView:(TCCardViewCell *)cardView
