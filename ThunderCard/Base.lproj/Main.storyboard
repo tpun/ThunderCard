@@ -103,7 +103,7 @@
                         <action selector="playRecording:" destination="AWa-G2-4B8" id="DhI-Xx-OHQ"/>
                     </connections>
                 </tapGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ocM-wz-Mq6">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.20000000000000001" id="ocM-wz-Mq6">
                     <connections>
                         <action selector="startOrStopRecording:" destination="AWa-G2-4B8" id="ITR-f4-gwG"/>
                     </connections>
