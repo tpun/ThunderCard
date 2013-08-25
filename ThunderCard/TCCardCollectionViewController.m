@@ -27,7 +27,7 @@
 @end
 
 NSString * const TCDeleteCardActionSheetButtonTitle = @"Delete this card";
-NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete recording only";
+NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete this recording";
 
 @implementation TCCardCollectionViewController
 
