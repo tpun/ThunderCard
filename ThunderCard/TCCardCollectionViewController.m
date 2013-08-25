@@ -22,7 +22,12 @@
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *singleTapRecognizer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *doubleTapRecognizer;
 @end
+
+#define TCCreateCardAlertViewTag 10
+#define TCDeleteCardAlertViewTag 100
 
 @implementation TCCardCollectionViewController
 
@@ -40,6 +45,7 @@
     [super viewDidLoad];
     [self updateTitle];
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [self.singleTapRecognizer requireGestureRecognizerToFail:self.doubleTapRecognizer];
 }
 
 - (void)updateTitle
@@ -67,8 +73,14 @@
 
 - (TCCard *)cardFromViewCell:(TCCardViewCell *)cardViewCell
 {
-    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cardViewCell];
+    NSIndexPath *indexPath = [self currentCardViewCellIndexPath];
     return [self.cardCollection.sortedCards objectAtIndex:indexPath.row];
+}
+
+- (NSIndexPath *)currentCardViewCellIndexPath
+{
+    TCCardViewCell *currentViewCell = [self currentCardViewCell];
+    return [self.collectionView indexPathForCell:currentViewCell];
 }
 
 - (TCCardViewCell *)currentCardViewCell
@@ -148,24 +160,17 @@
 
 #pragma mark - Card Creation
 
-- (IBAction)addCard:(UIBarButtonItem *)sender {
+- (IBAction)confirmCardCreation:(UIBarButtonItem *)sender {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"New ThunderCard"
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:@"Cacnel"
+                                              cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"Create", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alertView.tag = TCCreateCardAlertViewTag;
     UITextField *textField = [alertView textFieldAtIndex:0];
     textField.placeholder = @"Name of the new card";
     [alertView show];
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex==1) {
-        UITextField *textField = [alertView textFieldAtIndex:0];
-        [self createCard:textField.text];
-    }
 }
 
 - (void)createCard:(NSString *)text {
@@ -174,12 +179,51 @@
     card.text = text;
     [self.cardCollection reload];
     [self updateTitle];
+
     NSIndexPath *latestPath = [NSIndexPath indexPathForItem:self.cardCollection.sortedCards.count-1
                                                   inSection:0];
     [self.collectionView insertItemsAtIndexPaths:@[latestPath]];
     [self.collectionView scrollToItemAtIndexPath:latestPath
                                 atScrollPosition:UICollectionViewScrollPositionCenteredVertically & UICollectionViewScrollPositionCenteredHorizontally
                                         animated:YES];
+}
+
+#pragma mark - Card Deletion
+
+- (IBAction)confirmCardDeletion:(UITapGestureRecognizer *)sender {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete this card?"
+                                                        message:@"This operation cannot be undone"
+                                                       delegate:self
+                                              cancelButtonTitle:@"No"
+                                              otherButtonTitles:@"Yes", nil];
+    alertView.tag = TCDeleteCardAlertViewTag;
+    [alertView show];
+}
+
+- (void)deleteCurrentCard
+{
+    TCCard *card = [self currentCard];
+    [self.cardCollection.managedObjectContext deleteObject:card];
+    [self.cardCollection reload];
+    [self updateTitle];
+
+    [self.collectionView deleteItemsAtIndexPaths:@[[self currentCardViewCellIndexPath]]];
+}
+
+#pragma mark - AlertView Delegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag==TCCreateCardAlertViewTag) {
+        if (buttonIndex==1) {
+            UITextField *textField = [alertView textFieldAtIndex:0];
+            [self createCard:textField.text];
+        }
+    } else if (alertView.tag==TCDeleteCardAlertViewTag) {
+        if (buttonIndex==1) {
+            [self deleteCurrentCard];
+        }
+    }
 }
 
 @end
