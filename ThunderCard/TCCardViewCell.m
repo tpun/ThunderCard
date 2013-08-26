@@ -50,7 +50,7 @@
 {
     _hasRecording = hasRecording;
     if (_hasRecording) {
-        self.helperLabel.text = @"Tap to play. Hold to record.";
+        self.helperLabel.text = @"Tap to play.";
     } else {
         self.helperLabel.text = @"Hold to record.";
     }
