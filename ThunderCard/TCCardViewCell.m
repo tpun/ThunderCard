@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *statusActivityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *helperLabel;
+@property (weak, nonatomic) IBOutlet UIView *cardView;
 @end
 
 @implementation TCCardViewCell
@@ -55,6 +56,25 @@
         self.helperLabel.text = @"Hold to record.";
     }
     [self setNeedsDisplay];
+}
+
+- (void)updateVolumeLevel:(float)dB
+{
+    float min = 0.6;
+    float max = 1.0;
+    float strength = pow(dB+180, 5.0) / pow(180.0, 5.0);
+    if (strength < min) strength = min;
+    if (strength > max) strength = max;
+    UIColor *color = [UIColor colorWithRed:strength
+                                     green:0
+                                      blue:0
+                                     alpha:1];
+    self.cardView.backgroundColor = color;
+}
+
+- (void)resetVolumeLevel
+{
+    self.cardView.backgroundColor = [UIColor whiteColor];
 }
 
 @end

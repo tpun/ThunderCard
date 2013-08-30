@@ -14,4 +14,6 @@
 
 - (void)startRecording;
 - (void)stopRecording;
+- (void)updateVolumeLevel:(float)dB;
+- (void)resetVolumeLevel;
 @end

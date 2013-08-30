@@ -17,7 +17,7 @@
 #import <AVFoundation/AVAudioPlayer.h>
 #import <AVFoundation/AVAudioSession.h>
 
-@interface TCCardCollectionViewController() <UIActionSheetDelegate>
+@interface TCCardCollectionViewController() <UIActionSheetDelegate, AVAudioPlayerDelegate, AVAudioRecorderDelegate>
 @property (strong, nonatomic) TCCardCollection *cardCollection;
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
@@ -137,7 +137,15 @@ NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete this recordi
     } else {
         [cardView startRecording];
         self.audioRecorder = card.audioRecorder;
+        self.audioRecorder.meteringEnabled = YES;
         [self.audioRecorder record];
+
+        // Set up a timer for update audio level
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2
+                                                      target:self
+                                                    selector:@selector(meterRecorderVolumeLevel:)
+                                                    userInfo:nil
+                                                     repeats:YES];
     }
 }
 
@@ -153,6 +161,7 @@ NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete this recordi
 {
     [cardView stopRecording];
     [self.audioRecorder stop];
+    [self resetVolumeLevel];
 }
 
 - (IBAction)playRecording:(UITapGestureRecognizer *)sender {
@@ -161,9 +170,19 @@ NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete this recordi
     // stop if previously playing
     if (self.audioPlayer.isPlaying) {
         [self.audioPlayer stop];
-    } else {
+        [self resetVolumeLevel];
+    } else if (card.hasRecording) {
         self.audioPlayer = card.audioPlayer;
+        self.audioPlayer.meteringEnabled = YES;
+        self.audioPlayer.delegate = self;
         [self.audioPlayer play];
+
+        // Set up a timer for update audio level
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2
+                                                      target:self
+                                                    selector:@selector(meterPlayerVolumeLevel:)
+                                                    userInfo:nil
+                                                     repeats:YES];
     }
 }
 
@@ -254,4 +273,41 @@ NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete this recordi
     }
 }
 
+- (void)meterRecorderVolumeLevel:(NSTimer *)timer
+{
+    [self.audioRecorder updateMeters];
+    float dB = [self.audioRecorder averagePowerForChannel:0];
+    TCCardViewCell *cardView = [self currentCardViewCell];
+    [cardView updateVolumeLevel:dB];
+}
+
+- (void)meterPlayerVolumeLevel:(NSTimer *)timer
+{
+    [self.audioPlayer updateMeters];
+    float dB = [self.audioPlayer averagePowerForChannel:0];
+    TCCardViewCell *cardView = [self currentCardViewCell];
+    [cardView updateVolumeLevel:dB];
+}
+
+- (void)resetVolumeLevel
+{
+    [self.timer invalidate];
+    TCCardViewCell *cardView = [self currentCardViewCell];
+    [cardView resetVolumeLevel];
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    [self resetVolumeLevel];
+}
+
+- (void)audioPlayerBeginInterruption:(AVAudioPlayer *)player
+{
+    [self resetVolumeLevel];
+}
+
+- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
+{
+    [self resetVolumeLevel];
+}
 @end
