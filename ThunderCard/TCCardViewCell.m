@@ -22,6 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.cardView.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -60,7 +61,7 @@
 
 - (void)updateVolumeLevel:(float)dB
 {
-    float min = 0.6;
+    float min = 0.5;
     float max = 1.0;
     float strength = pow(dB+180, 5.0) / pow(180.0, 5.0);
     if (strength < min) strength = min;
@@ -69,12 +70,19 @@
                                      green:0
                                       blue:0
                                      alpha:1];
-    self.cardView.backgroundColor = color;
+
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         self.cardView.backgroundColor = color;
+                     }];
 }
 
 - (void)resetVolumeLevel
 {
-    self.cardView.backgroundColor = [UIColor whiteColor];
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         self.cardView.backgroundColor = [UIColor whiteColor];
+                     }];
 }
 
 @end

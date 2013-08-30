@@ -28,6 +28,7 @@
 
 NSString * const TCDeleteCardActionSheetButtonTitle = @"Delete this card";
 NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete this recording";
+#define TimerFrequency 0.3
 
 @implementation TCCardCollectionViewController
 
@@ -141,7 +142,7 @@ NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete this recordi
         [self.audioRecorder record];
 
         // Set up a timer for update audio level
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:TimerFrequency
                                                       target:self
                                                     selector:@selector(meterRecorderVolumeLevel:)
                                                     userInfo:nil
@@ -178,7 +179,7 @@ NSString * const TCDeleteRecordingActionSheetButtonTitle = @"Delete this recordi
         [self.audioPlayer play];
 
         // Set up a timer for update audio level
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:TimerFrequency
                                                       target:self
                                                     selector:@selector(meterPlayerVolumeLevel:)
                                                     userInfo:nil
