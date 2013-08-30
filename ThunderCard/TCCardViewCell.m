@@ -61,16 +61,21 @@
 
 - (void)updateVolumeLevel:(float)dB
 {
-    float min = 0.5;
-    float max = 1.0;
-    float strength = pow(dB+180, 5.0) / pow(180.0, 5.0);
-    if (strength < min) strength = min;
-    if (strength > max) strength = max;
-    UIColor *color = [UIColor colorWithRed:strength
-                                     green:0
+    float scale = dB + 180.0; // 0 to 180.0
+    float min=100.0, max=180.0;
+    scale = (scale - min)/(max - min); // a scale between min and max
+    if (scale < 0.0) scale = 0.0;
+    if (scale > 1.0) scale = 1.0;
+
+    //          Yellow  Red
+    // red      1.0     1.0
+    // green    1.0     0.0
+    // blue     0.0     0.0
+    float green = 1.0 - scale;
+    UIColor *color = [UIColor colorWithRed:1
+                                     green:green
                                       blue:0
                                      alpha:1];
-
     [UIView animateWithDuration:0.2
                      animations:^{
                          self.cardView.backgroundColor = color;
